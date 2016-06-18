@@ -30,8 +30,8 @@ class UserLoginForm(forms.Form):
                 raise forms.ValidationError("This user is not longer active.")
         return super(UserLoginForm, self).clean(*args, **kwargs)
 
-
-email = forms.EmailField(label="Email address")
+class UserRegisterForm(forms.ModelForm):
+    email = forms.EmailField(label="Email address")
     email2 = forms.EmailField(label="Confirm Email")
     first_name = forms.CharField(label="First name")
     last_name = forms.CharField(label="Last name")
@@ -71,6 +71,11 @@ email = forms.EmailField(label="Email address")
             raise forms.ValidationError("This email has already been registered")
         return email
 
+    def clean_password2(self):
+        password = self.cleaned_data.get('password')
+        password2 = self.cleaned_data.get('password2')
+        if password != password2:
+            raise forms.ValidationError("Password must match.")
 
 
 
