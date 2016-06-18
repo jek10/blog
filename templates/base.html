@@ -1,0 +1,149 @@
+{% load staticfiles %}
+<!--DOCTYPE html -->
+<html>
+<head>
+
+<title>{% block head_title %}My Blog{% endblock head_title %}</title>
+
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta property="og:url"           content="{{instance.get_absolute_url}}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="{{ instance.title }}" />
+    <meta property="og:description"   content=""/>
+    {% if instance.image %}
+    <meta property="og:image"         content="{{ instance.image.url }}" />
+    {% endif %}
+    <link rel="me" href="https:/{{instance.get_absolute_url}}"> <!-- META-DATA -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href='{% static "css/bootstrap.min.css" %}' rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+    <!-- Material Design Bootstrap -->
+    <link href='{% static "css/mdb.min.css" %}' rel="stylesheet">
+
+    <link href='{% static "css/style.css" %}' rel="stylesheet" /> <!-- CDN Link/CSS -->
+
+<style>
+{% block style %}
+{% endblock style %}
+</style> <!-- EXTRA STYLE -->
+
+{% block head_extra %} 
+{% endblock head_extra %}
+
+</head>
+<body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script> <!-- FACEBOOK SCRIPT -->
+
+<div class='col-sm-6 col-sm-offset-3'>
+<div class="row">
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong></strong>{{ message }}.
+</div>
+{% endfor %}
+</div>
+</div>  <!-- For ALERT messages -->
+
+{% include "navbar.html" %} <!-- NAVBAR -->
+
+<div class='container'> 
+{% block content %}
+{% endblock content %}
+</div> <!-- MAIN CONTENT -->
+
+{% include "footer.html" %} <!-- FOOTER -->
+
+    <script src="https://code.jquery.com/jquery-1.12.2.min.js" integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk=" crossorigin="anonymous"></script>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src='{% static "js/jquery-2.2.3.min.js" %}' ></script>
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src='{% static "js/tether.min.js" %}'></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src='{% static "js/bootstrap.min.js" %}'></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src='{% static "js/mdb.min.js" %}'></script> <!-- Scripts Link -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".content-markdown").each(function(){
+            var content = $(this).text()
+            var markedContent = marked(content)
+            $(this).html(markedContent)
+    })
+    $(".post-detail-item img").each(function(){
+            $(this).addClass("img-fluid");
+    })
+
+    
+
+    var contentInput = $("#id_content");
+
+    function setContent(value){
+        var markedContent = marked(value)
+        $("#preview-content").html(markedContent)
+        $("#preview-content img").each(function(){
+            $(this).addClass("img-fluid")
+        })
+    }
+    setContent(contentInput.val())
+
+    contentInput.keyup(function(){
+        var newContent = $(this).val()
+        setContent(newContent)
+    })
+
+    var titleInput = $("#id_title");
+    
+
+
+    function setTitle(value) {
+        $("#preview-title").text(value)
+    }
+    setTitle(titleInput.val())
+
+    titleInput.keyup(function(){
+        var newContent = $(this).val()
+        setTitle(newContent)
+    })
+
+    $(".comment-reply-btn").click(function(event){
+        event.preventDefault();
+        $(this).parent().next(".comment-reply").fadeToggle();
+    })
+
+
+    // preview-title
+    // preview-content
+
+})
+
+</script>
+ <!-- Scripts Function -->
+
+</body>
+</html>
+
+
+
+

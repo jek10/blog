@@ -1,0 +1,80 @@
+/* TEMPLATE STYLES */
+.wmd-panel{
+margin-right: 0px !important;
+margin-left: 0px !important;
+width: auto !important;
+min-width: auto !important;
+}
+
+.view img, .view video {
+    display: block !important;
+    width: 100% !important;
+    height: 58% !important;
+
+}
+
+body{
+    background-color: #ecf0f1;
+    padding-top: 70px;
+}
+
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+
+
+
+.comment-reply{
+display: none;
+}
+
+.post-detail-item .img {
+    width:80%;
+}
+.wmd-button-row 
+{
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+	margin-bottom: 0px !important;
+	margin-top: 0px !important;
+	padding: 0px;  
+	height: 20px;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+
+font-family: 'Ubuntu', sans-serif;
+
+.example-list li {
+    display: inline;
+    background-color: #333333;
+    color: #FFFFFF;
+    padding: 10px;
+}
+
+main {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+}
+
+.extra-margins {
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.img-fluid {
+	margin: 0 auto;
+}
+
+
+    
+.btn-gplus:focus, .btn-gplus:hover {
+    background-color: #e15f4f;
+}
+
+.bg-primary {
+    background-color: #0d47a1!important;
+}

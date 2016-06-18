@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class='col-sm-12'>
+<form method='GET' action='' class='row' style="padding-bottom:5px;">
+        <div class='col-sm-12'>
+            <div class='input-group'>
+                <input class='form-control' style="background-color: #f5f5f5;" type='text' name='q' placeholder=' Search posts...' value='{{ request.GET.q }}'/>
+                <span class='input-group-btn'>
+                    <button class='btn btn-default' style="padding: .7rem 1rem;" type='submit'>Search <i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+</form>
+<div class="row">
+{% for obj in object_list %}
+  <div class="col-sm-6">
+    <div class="card">
+        <div class="view overlay hm-white-slight">
+        {% if obj.image %}
+         <img src='{{ obj.image.url }}' class='img-fluid' />
+         <div class="mask"></div>
+        {% endif %}
+        </div>
+        <div class="card-block">
+      <div class="caption post-detail-item">
+        <h3 class="h3-responsive"><a href='{{ obj.get_absolute_url }}'>{{ obj.title }}</a></h3>
+          {% if obj.draft %}<h3>Staff only: Draft</h3>{% endif %}{% if obj.publish > today %}<h3>Staff Only: Future Post</h3>{% endif %}
+          <p class="text-muted">By: <a href=''> {{ obj.user.get_full_name }}</a> on {{ obj.publish }} - in {{ obj.category }}</p>
+          <hr>
+          <p>{{ obj.get_markdown|truncatechars_html:120 }}</p>
+          <a href="{{ obj.get_absolute_url }}" class="btn btn-default">Readmore</a>
+      </div>
+     </div>
+    </div>
+  </div>
+{% cycle "" "</div><hr><div class='row'>" %}
+{% endfor %}
+</div>
+
+</div>
+
+{% endblock content %}
