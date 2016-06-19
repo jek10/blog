@@ -13,10 +13,10 @@ min-width: auto !important;
 
 }*/
 
-.view{
+/*.view{
   padding-top: 15px !important;
 }
-
+*/
 body{
     background-color: #ecf0f1;
     padding-top: 70px;
@@ -117,6 +117,6 @@ main {
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0 auto 1em;
-  max-height: 600px;
-  max-width: 600px;
+ /* max-height: 600px;
+  max-width: 600px;*/
 }
