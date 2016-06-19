@@ -106,7 +106,7 @@ def post_list(request):
 				Q(user__first_name__icontains=query) |
 				Q(user__last_name__icontains=query)
 				).distinct()
-	paginator = Paginator(queryset_list, 8) # Show 25 contacts per page
+	paginator = Paginator(queryset_list, 6) # Show 25 contacts per page
 	page_request_var = "page"
 	page = request.GET.get(page_request_var)
 	try:
@@ -122,7 +122,7 @@ def post_list(request):
 	if query:
 		queryset_list = queryset_list.filter(
 				Q(category=query)).distinct()
-	paginator = Paginator(queryset_list, 8) # Show 25 contacts per page
+	paginator = Paginator(queryset_list, 6) # Show 25 contacts per page
 	page_request_var = "page"
 	page = request.GET.get(page_request_var)
 	try:
@@ -137,7 +137,7 @@ def post_list(request):
 	query = request.GET.get("my-posts")
 	if query:
 		queryset_list = Post.objects.filter(user__username=request.user).exclude(draft=request.user)
-	paginator = Paginator(queryset_list, 8) # Show 25 contacts per page
+	paginator = Paginator(queryset_list, 6) # Show 25 contacts per page
 	page_request_var = "page"
 	page = request.GET.get(page_request_var)
 	try:
@@ -152,7 +152,7 @@ def post_list(request):
 	query = request.GET.get("draft")
 	if query:
 		queryset_list = Post.objects.filter(draft=request.user).filter(user__username=request.user)
-	paginator = Paginator(queryset_list, 8) # Show 25 contacts per page
+	paginator = Paginator(queryset_list, 6) # Show 25 contacts per page
 	page_request_var = "page"
 	page = request.GET.get(page_request_var)
 	try:
