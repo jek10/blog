@@ -16,13 +16,24 @@
 
 {% block content %}
 <div class='col-sm-8 col-sm-offset-2'>
+<div class="row">
 <div class="card">
-<div class="card-block">
-  <br>
+<div class="card card-inverse text-xs-center" style="margin-bottom:0px">
+      {% if instance.category == "DESIGN" %}
+      <header class="card-header card-warning">{{ instance.category }}</header>
+      {% elif instance.category == "PROGRAMMING" %}
+      <header class="card-header card-success">{{ instance.category }}</header>
+      {% elif instance.category == "SECURITY" %}
+      <header class="card-header card-danger">{{ instance.category }}</header>
+      {% elif instance.category == "TECHNOLOGY" %}
+      <header class="card-header" style="background-color: #333333;">{{ instance.category }}</header>
+      {% endif %}
+      </div>
+<div class="card-block" style="paddting-top:0px">
   <h2>{{ title }}{% if instance.draft %}<span style='color:red;'> Draft</span> {% endif %}</h2>
   <hr>
   {% if instance.draft %}<h4>Staff only: Draft</h4>{% endif %}{% if instance.publish > today %}<h4>Staff Only: Future Post</h4>{% endif %}
-  <p class="text-muted">Author: <a href=''> {{ instance.user.get_full_name }} </a> on {{ instance.publish }} - in {{ instance.category }} {% if request.user.is_staff and request.user.get_full_name == instance.user.get_full_name %} | <a href='{{instance.get_absolute_url}}edit'> Edit</a> | <a href='{{instance.get_absolute_url}}delete'> Delete</a>{% endif %} </p>
+  <p class="text-muted">Author: <a href=''> {{ instance.user.get_full_name }} </a> on {{ instance.publish }} {% if request.user.is_staff and request.user.get_full_name == instance.user.get_full_name %} | <a href='{{instance.get_absolute_url}}edit'> Edit</a> | <a href='{{instance.get_absolute_url}}delete'> Delete</a>{% endif %} </p>
   <p class="text-muted">Read time: {% if instance.read_time <= 1 %} < 1 Minute {% else %} {{ instance.read_time }} Minutes {% endif %}</p>
   <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
   <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world">Tweet</a>
@@ -73,7 +84,7 @@
   </blockquote>
 {% endfor %}
 
-
+</div>
 </div>
 </div>
 </div>
