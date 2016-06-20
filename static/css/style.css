@@ -73,7 +73,9 @@ main {
 	margin: 0 auto;
 }
 
-
+.card-header{
+    border-bottom: 0px !important;
+}
     
 .btn-gplus:focus, .btn-gplus:hover {
     background-color: #e15f4f;
