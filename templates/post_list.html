@@ -19,13 +19,13 @@
     <div class="card">
       <div class="card card-inverse text-xs-center">
       {% if obj.category == "DESIGN" %}
-      <header class="card-header card-warning">{{ obj.category }}</header>
+      <header class="card-header card-warning"><a style="color:white" href='http://jekalviar.pythonanywhere.com/?category=DESIGN'>{{ obj.category }}</a></header>
       {% elif obj.category == "PROGRAMMING" %}
-      <header class="card-header card-success">{{ obj.category }}</header>
+      <header class="card-header card-success"><a style="color:white" href='http://jekalviar.pythonanywhere.com/?category=PROGRAMMING'>{{ obj.category }}</a></header>
       {% elif obj.category == "SECURITY" %}
-      <header class="card-header card-danger">{{ obj.category }}</header>
+      <header class="card-header card-danger"><a style="color:white" href='http://jekalviar.pythonanywhere.com/?category=SECURITY'>{{ obj.category }}</a></header>
       {% elif obj.category == "TECHNOLOGY" %}
-      <header class="card-header" style="background-color: #333333;">{{ obj.category }}</header>
+      <header class="card-header" style="background-color: #333333;"><a style="color:white" href='http://jekalviar.pythonanywhere.com/?category=TECHNOLOGY'>{{ obj.category }}</a></header>
       {% endif %}
       <div class="view overlay hm-white-slight">
         {% if obj.image %}

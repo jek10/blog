@@ -10,19 +10,29 @@
 <div class='col-sm-8 col-sm-offset-2'>
 <div class="card">
 <div class="card-block">
-<p><b><i class="fa fa-user fa-2x"> </i> {{ comment.user.get_full_name }}</b>
-<br>{{ comment.content }} <br> 
-<small class="text-muted">
-{{ comment.timestamp|timesince }} ago | </small>{% if request.user == comment.user %} <a href='{{ comment.get_delete_url }}'> <small class="text-muted">Delete </small></a> {% endif %}</p>
-<hr/>
+<div class="media">
+	<a class="media-left" href="#">
+    <img width="60" height="60" avatar="{{ comment.user.get_full_name }}">
+  	</a>
+  	<div class="media-body">
+  	{{ comment.user.get_full_name }}
+	<p>{{ comment.content }}<br><small class="text-muted">
+	{{ comment.timestamp|timesince }} ago | </small>{% if request.user == comment.user %} <a href='{{ comment.get_delete_url }}'> <small class="text-muted">Delete </small></a> {% endif %}</p>
+	<hr/>
+</div>
 
 <div>
 {% for children_comment in comment.children %}
 <blockquote>
-<p><b><i class="fa fa-user fa-2x"> </i> {{ children_comment.user.get_full_name }}</b>
-<br>{{ children_comment.content }} <br> 
-<small class="text-muted">{{ comment.timestamp|timesince }} - {{ children_comment.timestamp|timesince }} ago | </small><small class="text-muted">{% if request.user == children_comment.user %} <a class="text-muted" href='{{ children_comment.get_delete_url }}'> Delete </a> {% endif %}</small></p>
-</blockquote>
+	<a class="media-left" href="#">
+    <img width="60" height="60" avatar="{{ children_comment.user.get_full_name }}">
+  	</a>
+  	<div class="media-body">
+  	{{ children_comment.user.get_full_name }}
+	<p>{{ children_comment.content }}<br> 
+	<small class="text-muted">{{ comment.timestamp|timesince }} - {{ children_comment.timestamp|timesince }} ago | </small><small class="text-muted">{% if request.user == children_comment.user %} <a class="text-muted" href='{{ children_comment.get_delete_url }}'> Delete </a> {% endif %}</small></p>
+</div>
+	</blockquote>
 {% endfor %}
 
 
@@ -35,6 +45,7 @@
 <small>You must <a href='{% url "login" %}'>login</a> to reply</small>
 {% endif %}
 </form>
+</div>
 </div>
 </div>
 </div>

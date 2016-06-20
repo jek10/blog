@@ -10,13 +10,22 @@ min-width: auto !important;
     display: block !important;
     width: 100% !important;
     height: 85% !important;
-
 }*/
 
 /*.view{
   padding-top: 15px !important;
 }
 */
+
+pre {
+  margin: 20px 0;
+  padding: 20px;
+  background: #fafafa;
+}
+
+.round { border-radius: 50%; }
+
+
 body{
     background-color: #ecf0f1;
     padding-top: 70px;
@@ -30,7 +39,6 @@ html, body {
 }
 
 
-
 .comment-reply{
 display: none;
 }
@@ -40,12 +48,12 @@ display: none;
 }
 .wmd-button-row 
 {
-	margin-left: 0px !important;
-	margin-right: 0px !important;
-	margin-bottom: 0px !important;
-	margin-top: 0px !important;
-	padding: 0px;  
-	height: 20px;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+  padding: 0px;  
+  height: 20px;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
@@ -70,7 +78,7 @@ main {
 }
 
 .img-fluid {
-	margin: 0 auto;
+  margin: 0 auto;
 }
 
 .card-header{

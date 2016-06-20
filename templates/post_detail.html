@@ -20,13 +20,13 @@
 <div class="card">
 <div class="card card-inverse text-xs-center" style="margin-bottom:0px">
       {% if instance.category == "DESIGN" %}
-      <header class="card-header card-warning">{{ instance.category }}</header>
+      <header class="card-header card-warning"><a style="color:white" href='http://jekalviar.pythonanywhere.com/?category=DESIGN'>{{ instance.category }}</a></header>
       {% elif instance.category == "PROGRAMMING" %}
-      <header class="card-header card-success">{{ instance.category }}</header>
+      <header class="card-header card-success"><a style="color:white" href='http://jekalviar.pythonanywhere.com/?category=PROGRAMMING'>{{ instance.category }}</a></header>
       {% elif instance.category == "SECURITY" %}
-      <header class="card-header card-danger">{{ instance.category }}</header>
+      <header class="card-header card-danger"><a style="color:white" href='http://jekalviar.pythonanywhere.com/?category=SECURITY'>{{ instance.category }}</a></header>
       {% elif instance.category == "TECHNOLOGY" %}
-      <header class="card-header" style="background-color: #333333;">{{ instance.category }}</header>
+      <header class="card-header" style="background-color: #333333;"><a style="color:white" href='http://jekalviar.pythonanywhere.com/?category=TECHNOLOGY'>{{ instance.category }}</a></header>
       {% endif %}
       </div>
 <div class="card-block" style="paddting-top:0px">
@@ -57,19 +57,26 @@
 
   {% for comment in comments %}
   <hr>
-
+  <div class="media">
   <blockquote>
+    <a class="media-left">
+    <img width="60" height="60" avatar="{{ comment.user.get_full_name }}">
+    </a>
+    <div class="media-body">
+    {{ comment.user.get_full_name }}
+    <p style="margin-bottom:0px">{{ comment.content }}<br><small class="text-muted">{{ comment.timestamp|timesince }} | </small>  {% if comment.children.count > 0 %} <small  class="text-muted"> {{ comment.children.count }} Comment{% if comment.children.count > 1 %}s {% endif %} | </small>  {% endif %}  <a class='comment-reply-btn' href="#" > <small  class="text-muted"> Reply</a> | </small>  <a class='' href='{{ comment.get_absolute_url }}'><small  class="text-muted">Thread</a></small>
 
-    <p><b><i class="fa fa-user fa-2x"> </i> {{ comment.user.get_full_name }}</b><br>{{ comment.content }}<br><small class="text-muted">{{ comment.timestamp|timesince }} | </small>  {% if comment.children.count > 0 %} <small  class="text-muted"> {{ comment.children.count }} Comment{% if comment.children.count > 1 %}s {% endif %} | </small>  {% endif %}  <a class='comment-reply-btn' href="#" > <small  class="text-muted"> Reply</a> | </small>  <a class='' href='{{ comment.get_absolute_url }}'><small  class="text-muted">Thread</a></small>
-     
-
-  <div class="comment-reply">
+   
+    <div class="comment-reply">
     <div class="card-block">
     {% for children_comment in comment.children %}
-  
-    <p><b><i class="fa fa-user fa-2x"> </i> {{ children_comment.user.get_full_name }}</b><br>{{ children_comment.content }} <br> <small class="text-muted">{{ comment.timestamp|timesince }} - {{ children_comment.timestamp|timesince }} ago </small> </p>
-    
-    {% endfor %}
+    <div class="media">
+    <a class="media-left">
+    <img width="60" height="60" avatar="{{ children_comment.user.get_full_name }}">
+    </a>
+    <p class="media-body">{{ children_comment.user.get_full_name }}<br>
+    {{ children_comment.content }}<br><small class="text-muted">{{ comment.timestamp|timesince }} - {{ children_comment.timestamp|timesince }} ago </small> </p>
+    {% endfor %}<br>
     <form method="POST" action="."> {% csrf_token %}
     {{ comment_form|crispy }}
     {% if request.user.is_authenticated %}
@@ -81,9 +88,10 @@
     {% endif %}   
   </div>
 </div>
-  </blockquote>
+</div>
+</blockquote>
+</div>
 {% endfor %}
-
 </div>
 </div>
 </div>
