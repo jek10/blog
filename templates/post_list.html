@@ -17,13 +17,18 @@
 {% for obj in object_list %}
 <div class="row">
     <div class="card">
-        <div class="view overlay hm-white-slight">
+      <div class="card card-primary card-inverse text-xs-center" style="border-color: white;">
+      <header class="card-header card-primary">{{ obj.category }}</header>
+      <div class="view overlay hm-white-slight">
         {% if obj.image %}
+
         <div class="CoverImage FlexEmbed FlexEmbed--16by9 img-fluid" style="background-image:url({{ obj.image.url }})"></div>
          <!-- <img src='' class='img-fluid' />
          <div class="mask"></div> -->
         {% endif %}
         </div>
+       </div>
+        
         <div class="card-block" style="padding-top:0px;">
       <div class="caption post-detail-item">
         <h3 class="h3-responsive"><a href='{{ obj.get_absolute_url }}'>{{ obj.title }}</a></h3>

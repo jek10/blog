@@ -116,7 +116,7 @@ main {
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
-  margin: 0 auto 1em;
+  margin: 0 auto 0;
  /* max-height: 600px;
   max-width: 600px;*/
 }
