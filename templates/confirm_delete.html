@@ -15,7 +15,7 @@
 <hr>
 <div class="caption post-detail-item">
 <form method="POST" action="."> {% csrf_token %}
-<p>Are you sure you want to delete: "{{ object.title }}:{{ object.content }}"?</p>
+<p>Are you sure you want to delete: "{{ object.title }}:{{ object.content|truncatechars_html:10 }}"?</p>
 <button type='submit' class="btn btn-warning">Confirm</button>
 <a href='{{ object.get_absolute_url }}' class="btn btn-default">Cancel</a>
 </form>
