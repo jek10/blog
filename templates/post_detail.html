@@ -73,7 +73,7 @@
     <a class="media-left">
     <img width="50" height="50" avatar="{{ children_comment.user.get_full_name }}">
     </a>
-    <p class="media-body"><b><a> {{ children_comment.user.get_full_name }} </a></b> {{ children_comment.content }}<br><small class="text-muted">{{ comment.timestamp|timesince }} - {{ children_comment.timestamp|timesince }} ago </small> </p>
+    <p class="media-body"><b><a> {{ children_comment.user.get_full_name }} </a></b> {{ children_comment.content }}<br><small class="text-muted">{{ children_comment.timestamp|timesince }} ago </small> </p>
     {% endfor %}<br>
     <form method="POST" action="."> {% csrf_token %}
     {{ comment_form|crispy }}
