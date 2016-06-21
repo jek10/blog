@@ -12,7 +12,7 @@
 <div class="card-block">
 <div class="media">
 	<a class="media-left" href="#">
-    <img width="60" height="60" avatar="{{ comment.user.get_full_name }}">
+    <img width="60" height="60" class="circle" avatar="{{ comment.user.get_full_name }}">
   	</a>
   	<div class="media-body">
 	<p><b><a>{{ comment.user.get_full_name }}</a></b> {{ comment.content }} <br><small class="text-muted">
@@ -24,7 +24,7 @@
 {% for children_comment in comment.children %}
 <blockquote>
 	<a class="media-left" href="#">
-    <img width="60" height="60" avatar="{{ children_comment.user.get_full_name }}">
+    <img width="60" height="60" class="circle" avatar="{{ children_comment.user.get_full_name }}">
   	</a>
   	<div class="media-body">
 	<p><b><a>{{ children_comment.user.get_full_name }}</a></b> {{ children_comment.content }} <br> 
