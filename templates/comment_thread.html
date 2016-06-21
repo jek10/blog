@@ -28,7 +28,7 @@
   	</a>
   	<div class="media-body">
 	<p><b><a>{{ children_comment.user.get_full_name }}</a></b> {{ children_comment.content }} <br> 
-	<small class="text-muted">{{ comment.timestamp|timesince }} - {{ children_comment.timestamp|timesince }} ago | </small><small class="text-muted">{% if request.user == children_comment.user %} <a class="text-muted" href='{{ children_comment.get_delete_url }}'> Delete </a> {% endif %}</small></p>
+	<small class="text-muted">{{ children_comment.timestamp|timesince }} ago | </small><small class="text-muted">{% if request.user == children_comment.user %} <a class="text-muted" href='{{ children_comment.get_delete_url }}'> Delete </a> {% endif %}</small></p>
 </div>
 	</blockquote>
 {% endfor %}
