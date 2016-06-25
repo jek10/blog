@@ -26,6 +26,8 @@
       <header class="card-header card-danger"><a style="color:white" href='http://jekalviar.pythonanywhere.com/?category=SECURITY'>{{ obj.category }}</a></header>
       {% elif obj.category == "TECHNOLOGY" %}
       <header class="card-header" style="background-color: #333333;"><a style="color:white" href='http://jekalviar.pythonanywhere.com/?category=TECHNOLOGY'>{{ obj.category }}</a></header>
+      {% elif obj.category == "ANDROID" %}
+      <header class="card-header card-primary"><a style="color:white" href='http://jekalviar.pythonanywhere.com/?category=ANDROID'>{{ obj.category }}</a></header>
       {% endif %}
       <div class="view overlay hm-white-slight">
         {% if obj.image %}

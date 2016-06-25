@@ -17,6 +17,7 @@ from .utils import get_read_time
 # Create your models here.
 # MVC MODEL VIEW CONTROLLER
 CATEGORIES = (
+    ('ANDROID', 'Android'),
     ('PROGRAMMING', 'Programming'),
     ('DESIGN', 'Design'),
     ('TECHNOLOGY', 'Technology'),

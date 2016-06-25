@@ -4,6 +4,7 @@ from pagedown.widgets import PagedownWidget
 from .models import Post
 
 CATEGORIES = (
+    ('ANDROID', 'Android'),
     ('PROGRAMMING', 'Programming'),
     ('DESIGN', 'Design'),
     ('TECHNOLOGY', 'Technology'),
